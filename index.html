@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080e1a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Our Memories With Dad ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+
+<!-- ====== LOADING SCREEN ====== -->
+<div id="screen-loading">
+  <div class="loading-bg-orbs">
+    <div class="l-orb l-orb1"></div>
+    <div class="l-orb l-orb2"></div>
+    <div class="l-orb l-orb3"></div>
+  </div>
+  <div class="loading-content">
+    <div class="loading-heart-wrap">
+      <div class="loading-heart">❤️</div>
+      <div class="loading-ring r1"></div>
+      <div class="loading-ring r2"></div>
+      <div class="loading-ring r3"></div>
+    </div>
+    <h1 class="loading-title">Our Memories</h1>
+    <h2 class="loading-subtitle-ar">ذكرياتنا مع بابا</h2>
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<!-- Confetti Canvas (injected by JS) -->
+
+<!-- Floating Hearts -->
+<div class="hearts-container" id="heartsContainer"></div>
+
+<!-- Dark Mode -->
+<button class="darkmode-btn" id="darkmodeBtn" title="Dark Mode" aria-label="Dark mode">☀️</button>
+<!-- Sound -->
+<button class="sound-btn" id="soundBtn" title="Sound" aria-label="Sound effects">🔊</button>
+<!-- Fullscreen (desktop/tablet) -->
+<button class="fs-btn" id="fsBtn" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+
+<!-- ====== GATE ====== -->
+<div class="screen" id="screen-gate">
+  <div class="gate-bg-orb orb1"></div>
+  <div class="gate-bg-orb orb2"></div>
+  <div class="gate-bg-orb orb3"></div>
+  <div class="gate-animated-bg"></div>
+  <div class="gate-stars" id="gateStars"></div>
+  <div class="gate-container" id="gateContainer">
+    <div class="gate-glass">
+      <div class="gate-logo">
+        <div class="heart-pulse">❤️</div>
+        <h1 class="gate-main-title">Our Memories With Dad</h1>
+        <p class="gate-dad-name">بابا الغالي</p>
+        <p class="gate-subtitle">ذكرياتنا الجميلة</p>
+      </div>
+      <div class="gate-form">
+        <div class="input-group">
+          <input type="password" id="mainPassword" placeholder="ادخل الباسورد..." class="main-input" autocomplete="off">
+          <button onclick="checkMainPassword()" class="btn-primary">دخول ❤️</button>
+        </div>
+        <p class="hint-text">المكان ده بتاعنا إحنا بس 💙</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FAMILY MEMBERS ====== -->
+<div class="screen" id="screen-family">
+  <div class="family-header">
+    <button class="back-btn" onclick="goTo('screen-gate')">←</button>
+    <div>
+      <h2>أهلاً في كتاب ذكرياتنا ❤️</h2>
+      <p>اختار اسمك عشان تدخل مساحتك</p>
+    </div>
+  </div>
+  <div class="members-grid">
+    <div class="member-card" onclick="selectMember('Yoma','Yoma','رقاصه','💃')">
+      <div class="member-avatar">💃</div>
+      <h3>Yoma</h3>
+      <div class="member-glow"></div>
+    </div>
+    <div class="member-card" onclick="selectMember('Janjan','Janjan','السيده','🐼')">
+      <div class="member-avatar">🐼</div>
+      <h3>Janjan</h3>
+      <div class="member-glow"></div>
+    </div>
+    <div class="member-card" onclick="selectMember('Mo','Mo','يا ابن الكلب','⚙️')">
+      <div class="member-avatar">⚙️</div>
+      <h3>Mo</h3>
+      <div class="member-glow"></div>
+    </div>
+    <div class="member-card" onclick="selectMember('Domdom','Domdom','اخر العنقود','🍇')">
+      <div class="member-avatar">🍇</div>
+      <h3>Domdom</h3>
+      <div class="member-glow"></div>
+    </div>
+    <div class="member-card" onclick="selectMember('Fozda2a','Fozda2a','الحته','🌟')">
+      <div class="member-avatar">🌟</div>
+      <h3>Fozda2a</h3>
+      <div class="member-glow"></div>
+    </div>
+    <div class="member-card dad-special-card" onclick="selectMember('Dad','Dad Photos','FAMILY2026','👨‍👧‍👦')">
+      <div class="member-avatar">👨‍👧‍👦</div>
+      <h3>Dad Photos</h3>
+      <div class="member-glow dad-glow"></div>
+    </div>
+  </div>
+  <div class="family-bottom-links">
+    <div class="family-link-card birthday-link" onclick="goTo('screen-birthday')">
+      <span class="link-icon">🎂</span>
+      <span>عيد ميلاد بابا</span>
+    </div>
+    <div class="family-link-card message-link" onclick="goTo('screen-message')">
+      <span class="link-icon">💌</span>
+      <span>رسالة لبابا</span>
+    </div>
+    <div class="family-link-card message-link" onclick="document.getElementById('bulkFolderInput').click()">
+      <span class="link-icon">📂</span>
+      <span>استيراد كل الصور</span>
+    </div>
+  </div>
+  <input type="file" id="bulkFolderInput" webkitdirectory directory multiple hidden>
+</div>
+
+<!-- ====== MEMBER LOGIN ====== -->
+<div class="screen" id="screen-member-login">
+  <div class="member-login-container">
+    <button class="back-btn" onclick="goTo('screen-family')">←</button>
+    <div class="member-login-avatar" id="loginAvatar">💃</div>
+    <h2 id="loginName">Yoma</h2>
+    <p class="login-subtitle">ادخل الباسورد السري</p>
+    <div class="input-group">
+      <input type="password" id="memberPassword" placeholder="الباسورد..." class="main-input" autocomplete="off"
+        onkeyup="if(event.key==='Enter')checkMemberPassword()">
+      <button onclick="checkMemberPassword()" class="btn-primary">دخول ❤️</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== MEMORIES PAGE ====== -->
+<div class="screen" id="screen-memories">
+  <div class="memories-header">
+    <button class="back-btn" onclick="goTo('screen-family')">←</button>
+    <div class="header-info">
+      <span class="header-avatar" id="memAvatar">💃</span>
+      <div>
+        <h2 id="memName">Yoma</h2>
+        <p id="memCount">0 ذكريات</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="fav-filter-btn" id="favFilterBtn" onclick="toggleFavFilter()" title="المفضلة">⭐</button>
+      <button class="add-btn hidden" id="addMemoryBtn" onclick="openAddModal()">+ إضافة</button>
+    </div>
+  </div>
+  <div class="memories-grid" id="memoriesGrid">
+    <div class="loading-memories"><div class="spinner"></div><p>جاري التحميل...</p></div>
+  </div>
+</div>
+
+<!-- ====== DAD PHOTOS PAGE ====== -->
+<div class="screen" id="screen-dad">
+  <div class="memories-header dad-header">
+    <button class="back-btn" onclick="goTo('screen-family')">←</button>
+    <div class="header-info">
+      <span class="header-avatar">👨‍👧‍👦</span>
+      <div>
+        <h2>صور بابا</h2>
+        <p id="dadPhotoCount">0 صور</p>
+      </div>
+    </div>
+    <button class="add-btn dad-add-btn" id="addDadBtn" onclick="openDadModal()">+ إضافة</button>
+  </div>
+  <div class="memories-grid" id="dadGrid">
+    <div class="loading-memories"><div class="spinner"></div><p>جاري التحميل...</p></div>
+  </div>
+</div>
+
+<!-- ====== BIRTHDAY SCREEN ====== -->
+<div class="screen" id="screen-birthday">
+  <div class="birthday-header">
+    <button class="back-btn" onclick="goTo('screen-family')">←</button>
+    <h2>🎂 عيد ميلاد بابا</h2>
+  </div>
+  <div class="birthday-content">
+
+    <!-- Marriage Counter -->
+    <div class="marriage-counter">
+      <div class="counter-icon">💍</div>
+      <div class="counter-text">
+        <span class="counter-num" id="marriageDays">—</span>
+        <span class="counter-label">يوم من يوم ما بابا وماما اتجوزوا</span>
+      </div>
+      <div class="counter-date" id="weddingDateLabel">الخميس 22/11/2007</div>
+      <div class="counter-hearts">❤️ ❤️ ❤️</div>
+    </div>
+
+    <!-- Birthday Card -->
+    <div class="birthday-card">
+      <div class="birthday-stars">✨ 🌟 ✨ 🌟 ✨</div>
+      <h3 class="birthday-title-text">كل سنة وبابا بخير</h3>
+      <p class="birthday-wish">يا أجمل إنسان في حياتنا،<br>ربنا يخليك لينا ويكملك الصحة والسعادة 💙</p>
+
+      <!-- Candle Area -->
+      <div class="candle-scene" id="candleScene">
+        <div class="cake-base">
+          <div class="cake-tier cake-top">
+            <div class="cake-deco">🌸 🌸 🌸</div>
+          </div>
+          <div class="cake-tier cake-mid"></div>
+          <div class="cake-tier cake-bot"></div>
+          <div class="candle-holder">
+            <div class="candle-stick">
+              <div class="flame-wrap" id="flameWrap">
+                <div class="flame">
+                  <div class="flame-outer"></div>
+                  <div class="flame-inner"></div>
+                  <div class="flame-core"></div>
+                </div>
+                <div class="flame-glow"></div>
+              </div>
+              <div class="candle-body-el"></div>
+              <div class="candle-wax"></div>
+            </div>
+          </div>
+        </div>
+        <p class="blown-msg hidden" id="blownMsg">🎊 كل سنة وبابا بخير! 🎊</p>
+      </div>
+
+      <!-- Mic Button -->
+      <div class="mic-section">
+        <button class="mic-btn" id="micBtn" onclick="startListening()">
+          <span class="mic-icon">🎤</span>
+          <span class="mic-txt">انفخ في الشمعة!</span>
+        </button>
+        <p class="mic-hint">اضغط وانفخ في الميكروفون عشان تطفي الشمعة 🕯️</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ====== MESSAGE TO DAD ====== -->
+<div class="screen" id="screen-message">
+  <div class="message-header">
+    <button class="back-btn" onclick="goTo('screen-family')">←</button>
+    <h2>💌 رسالة لبابا</h2>
+  </div>
+  <div class="message-content">
+    <div class="message-card">
+      <div class="message-envelope">💌</div>
+      <h3>إلى أغلى إنسان في قلوبنا</h3>
+      <div class="message-text">
+        <p>بابا الغالي...</p>
+        <p>كل ذكرى معاك هي كنز لا يقدر بثمن. كل لحظة قضيناها مع بعض منقوشة في قلوبنا للأبد.</p>
+        <p>عملنا المكان ده بكل حبنا، عشان يكون شاهد على أجمل الذكريات اللي جمعتنا.</p>
+        <p>بنحبك يا بابا ❤️</p>
+        <p class="message-signature">— عيلتك</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADD MEMORY MODAL ====== -->
+<div class="modal-overlay hidden" id="addModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAddModal()">✕</button>
+    <h3>✨ إضافة ذكرى جديدة</h3>
+    <div class="upload-tabs">
+      <button class="upload-tab active" id="tabPhoto" onclick="switchTab('photo')">📷 صورة</button>
+      <button class="upload-tab" id="tabVideo" onclick="switchTab('video')">🎥 فيديو</button>
+    </div>
+    <div class="upload-area" id="uploadArea" onclick="document.getElementById('mediaInput').click()">
+      <input type="file" id="mediaInput" accept="image/*" onchange="previewMedia(event,'mediaPreview','mediaPH','mediaVideo')" hidden>
+      <input type="file" id="multiMediaInput" accept="image/*" multiple onchange="handleMultiSelect(event, false)" hidden>
+      <div id="mediaPH" class="upload-placeholder">
+        <div class="upload-icon">📷</div>
+        <p>اضغط لاختيار صورة</p>
+        <span>JPG · PNG · WEBP</span>
+      </div>
+      <img id="mediaPreview" class="hidden preview-img" alt="preview">
+      <video id="mediaVideo" class="hidden preview-video" controls></video>
+    </div>
+    <button type="button" class="multi-upload-btn" onclick="document.getElementById('multiMediaInput').click()">🖼️ إضافة حتى 30 صورة مرة واحدة</button>
+    <p class="multi-hint">بعد ما تفتح نافذة الصور، تقدر تختار الكل مرة واحدة (Ctrl + A) ثم Open.</p>
+    <div class="multi-upload-panel hidden" id="multiUploadPanel">
+      <div class="multi-upload-head">
+        <span id="multiCountLabel">0 صورة</span>
+        <button type="button" class="multi-clear-btn" onclick="clearMultiSelect(false)">مسح الكل</button>
+      </div>
+      <div class="multi-count-picker">
+        <label for="multiTargetCount">عدد الصور المطلوب:</label>
+        <input id="multiTargetCount" type="number" min="1" max="30" value="30">
+      </div>
+      <input id="multiBulkCaption" class="multi-caption-input" placeholder="تعليق موحد لكل الصور (اختياري)">
+      <button type="button" class="multi-apply-btn" onclick="applyBulkCaption(false)">تطبيق على الكل</button>
+      <div class="multi-upload-list" id="multiCaptionList"></div>
+    </div>
+    <textarea id="captionInput" placeholder="اكتب تعليق للذكرى دي... 💭" class="caption-input" rows="3"></textarea>
+    <button onclick="saveMemory()" class="btn-primary btn-save" id="saveBtn">حفظ الذكرى ❤️</button>
+  </div>
+</div>
+
+<!-- ====== ADD DAD PHOTO MODAL ====== -->
+<div class="modal-overlay hidden" id="dadModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeDadModal()">✕</button>
+    <h3>📸 إضافة صورة لبابا</h3>
+    <div class="upload-tabs">
+      <button class="upload-tab active" id="dadTabPhoto" onclick="switchDadTab('photo')">📷 صورة</button>
+      <button class="upload-tab" id="dadTabVideo" onclick="switchDadTab('video')">🎥 فيديو</button>
+    </div>
+    <div class="upload-area" onclick="document.getElementById('dadMediaInput').click()">
+      <input type="file" id="dadMediaInput" accept="image/*" onchange="previewMedia(event,'dadMediaPreview','dadMediaPH','dadMediaVideo')" hidden>
+      <input type="file" id="dadMultiMediaInput" accept="image/*" multiple onchange="handleMultiSelect(event, true)" hidden>
+      <div id="dadMediaPH" class="upload-placeholder">
+        <div class="upload-icon">👨‍👧‍👦</div>
+        <p>اضغط لاختيار صورة بابا</p>
+        <span>JPG · PNG · WEBP</span>
+      </div>
+      <img id="dadMediaPreview" class="hidden preview-img" alt="preview">
+      <video id="dadMediaVideo" class="hidden preview-video" controls></video>
+    </div>
+    <button type="button" class="multi-upload-btn" onclick="document.getElementById('dadMultiMediaInput').click()">🖼️ إضافة حتى 30 صورة مرة واحدة</button>
+    <p class="multi-hint">بعد ما تفتح نافذة الصور، تقدر تختار الكل مرة واحدة (Ctrl + A) ثم Open.</p>
+    <div class="multi-upload-panel hidden" id="dadMultiUploadPanel">
+      <div class="multi-upload-head">
+        <span id="dadMultiCountLabel">0 صورة</span>
+        <button type="button" class="multi-clear-btn" onclick="clearMultiSelect(true)">مسح الكل</button>
+      </div>
+      <div class="multi-count-picker">
+        <label for="dadMultiTargetCount">عدد الصور المطلوب:</label>
+        <input id="dadMultiTargetCount" type="number" min="1" max="30" value="30">
+      </div>
+      <input id="dadMultiBulkCaption" class="multi-caption-input" placeholder="تعليق موحد لكل الصور (اختياري)">
+      <button type="button" class="multi-apply-btn" onclick="applyBulkCaption(true)">تطبيق على الكل</button>
+      <div class="multi-upload-list" id="dadMultiCaptionList"></div>
+    </div>
+    <textarea id="dadCaptionInput" placeholder="اكتب تعليق... 💭" class="caption-input" rows="3"></textarea>
+    <button onclick="saveDadPhoto()" class="btn-primary btn-save" id="dadSaveBtn">حفظ ❤️</button>
+  </div>
+</div>
+
+<!-- ====== LIGHTBOX ====== -->
+<div class="lightbox hidden" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav prev" onclick="navigateLight(-1)">‹</button>
+  <button class="lightbox-nav next" onclick="navigateLight(1)">›</button>
+  <div class="lightbox-inner">
+    <img id="lightboxImg" src="" alt="" style="display:none">
+    <video id="lightboxVid" controls style="display:none;"></video>
+    <p id="lightboxCaption"></p>
+    <span id="lightboxDate"></span>
+    <div class="lightbox-fav-btn" id="lightboxFavBtn" onclick="toggleFavFromLightbox()">⭐</div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast hidden" id="toast"></div>
+
+<!-- ====== MUSIC PLAYER ====== -->
+<div class="music-player" id="musicPlayer">
+  <div class="track-switcher">
+    <button class="track-pill active" id="trackBtn0" onclick="switchTrack(0)">🎂 Happy Birthday</button>
+    <button class="track-pill" id="trackBtn1" onclick="switchTrack(1)">🎵 مين يادوب</button>
+  </div>
+  <div class="player-top">
+    <div class="player-cassette">
+      <div class="cassette-body">
+        <div class="cassette-reel reel-l" id="reelL"></div>
+        <div class="cassette-label">
+          <span class="song-title-txt" id="songTitleTxt">🎂 Happy Birthday Song</span>
+          <span class="song-sub-txt" id="songSubTxt">أغنية عيد ميلادك</span>
+        </div>
+        <div class="cassette-reel reel-r" id="reelR"></div>
+      </div>
+      <div class="tape-track"><div class="tape-progress" id="tapeProg"></div></div>
+    </div>
+  </div>
+  <div class="player-time-row">
+    <span id="curTime">0:00</span>
+    <input type="range" id="progBar" value="0" min="0" max="100" step="0.1" oninput="seekTo(this.value)" class="prog-slider">
+    <span id="totTime">0:00</span>
+  </div>
+  <div class="player-btns">
+    <button class="ctrl-btn" onclick="seekBack()">⏮</button>
+    <button class="ctrl-btn play-main" id="playBtn" onclick="togglePlay()">▶</button>
+    <button class="ctrl-btn" onclick="seekFwd()">⏭</button>
+  </div>
+</div>
+
+<!-- ====== FIREBASE + LOGIC ====== -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, deleteDoc, doc }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+// ── FIREBASE CONFIG ────────────────────────────────────────────
+const firebaseConfig = {
+  apiKey: "AIzaSyCmfQhMuxy-8YB4UYP2sINigaIqy_o5GHU",
+  authDomain: "family-a18fa.firebaseapp.com",
+  projectId: "family-a18fa",
+  storageBucket: "family-a18fa.firebasestorage.app",
+  messagingSenderId: "101396397626",
+  appId: "1:101396397626:web:dfb8160a04290c045fbf03"
+};
+let db, storage, useFirebase = false;
+try {
+  if (firebaseConfig.apiKey && firebaseConfig.projectId) {
+    const fbApp = initializeApp(firebaseConfig);
+    db = getFirestore(fbApp);
+    storage = getStorage(fbApp);
+    useFirebase = true;
+  }
+} catch(e) {}
+
+// ── CONFIG ────────────────────────────────────────────────────
+// ⚠️ غير التاريخ ده لتاريخ جواز بابا وماما الحقيقي
+// ملاحظة: بنستخدم وقت الظهر لتجنب مشاكل اختلاف التوقيت.
+const WEDDING_DATE = new Date('2007-11-22T12:00:00');
+const WEDDING_DATE_LABEL_AR = 'الخميس 22/11/2007';
+
+// ── LOCALSTORAGE ──────────────────────────────────────────────
+const lsLoad  = m => { try { return JSON.parse(localStorage.getItem('mem_'+m))||[]; } catch { return []; } };
+const lsSave  = (m,a) => localStorage.setItem('mem_'+m, JSON.stringify(a));
+const toB64   = f => new Promise((res,rej) => { const r=new FileReader(); r.onload=e=>res(e.target.result); r.onerror=rej; r.readAsDataURL(f); });
+
+// Favorites stored per member
+const getFavs  = m => { try { return JSON.parse(localStorage.getItem('favs_'+m))||[]; } catch { return []; } };
+const saveFavs = (m,a) => localStorage.setItem('favs_'+m, JSON.stringify(a));
+
+// ── PREFERENCES ────────────────────────────────────────────────
+const prefGet = (k, fallback) => {
+  try { const v = localStorage.getItem(k); return v===null ? fallback : JSON.parse(v); }
+  catch { return fallback; }
+};
+const prefSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
+
+async function loadStaticMediaManifest() {
+  if (staticMediaCache) return staticMediaCache;
+  try {
+    const res = await fetch(STATIC_MEDIA_MANIFEST, { cache: 'no-store' });
+    if (!res.ok) throw new Error('manifest not found');
+    const data = await res.json();
+    staticMediaCache = (data && typeof data === 'object') ? data : {};
+  } catch {
+    staticMediaCache = {};
+  }
+  return staticMediaCache;
+}
+
+function normalizeStaticItems(items) {
+  if (!Array.isArray(items)) return [];
+  return items.map((item) => {
+    if (typeof item === 'string') {
+      return { imageURL: item, caption: '', date: '', type: 'image', source: 'static' };
+    }
+    if (!item || typeof item !== 'object' || !item.url) return null;
+    return {
+      imageURL: item.url,
+      caption: item.caption || '',
+      date: item.date || '',
+      type: item.type === 'video' ? 'video' : 'image',
+      source: 'static'
+    };
+  }).filter(Boolean);
+}
+
+// ── SFX (WebAudio) ─────────────────────────────────────────────
+let sfxEnabled = prefGet('pref_sfx', true);
+let sfxCtx = null;
+function getSfxCtx() {
+  if (!sfxCtx) sfxCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (sfxCtx.state === 'suspended') sfxCtx.resume().catch(()=>{});
+  return sfxCtx;
+}
+function sfxTone({ type='sine', freq=440, dur=0.12, gain=0.08, slideTo=null }) {
+  if (!sfxEnabled) return;
+  try {
+    const ctx = getSfxCtx();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, ctx.currentTime);
+    if (slideTo) o.frequency.exponentialRampToValueAtTime(slideTo, ctx.currentTime + dur);
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(gain, ctx.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + dur);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(ctx.currentTime);
+    o.stop(ctx.currentTime + dur + 0.02);
+  } catch(e) {}
+}
+function playSfx(name) {
+  switch(name) {
+    case 'nav':    return sfxTone({freq:520, slideTo:740, dur:0.09, gain:0.07});
+    case 'open':   return sfxTone({type:'triangle', freq:420, slideTo:820, dur:0.11, gain:0.06});
+    case 'close':  return sfxTone({type:'triangle', freq:820, slideTo:420, dur:0.11, gain:0.06});
+    case 'toast':  return sfxTone({type:'sine', freq:880, dur:0.07, gain:0.05});
+    case 'error':  return sfxTone({type:'sawtooth', freq:220, slideTo:160, dur:0.14, gain:0.04});
+    case 'toggle': return sfxTone({type:'square', freq:660, dur:0.06, gain:0.03});
+    case 'blow':   return sfxTone({type:'sine', freq:260, slideTo:120, dur:0.18, gain:0.06});
+    case 'fav':    return sfxTone({type:'sine', freq:740, slideTo:990, dur:0.08, gain:0.05});
+    default:       return sfxTone({freq:440, dur:0.06, gain:0.03});
+  }
+}
+
+// ── STATE ─────────────────────────────────────────────────────
+window.currentMember  = null;
+window.memories       = [];
+window.lightboxIndex  = 0;
+window.secretBuf      = '';
+window.showingFavOnly = false;
+window.currentMediaType = 'photo'; // 'photo' or 'video'
+window.currentDadMediaType = 'photo';
+window.lightboxAutoTimer = null;
+window.isAdminUnlocked = false;
+window.multiUploadFiles = [];
+window.multiDadUploadFiles = [];
+const PWDS = { Yoma:'رقاصه', Janjan:'السيده', Mo:'يا ابن الكلب', Domdom:'اخر العنقود', Fozda2a:'الحته', Dad:'FAMILY2026' };
+const MEMBER_FOLDER_MAP = {
+  yoma: 'Yoma',
+  janjan: 'Janjan',
+  mo: 'Mo',
+  domdom: 'Domdom',
+  fozda2a: 'Fozda2a',
+  dad: 'Dad',
+  dadphotos: 'Dad',
+  dadphoto: 'Dad',
+  'dad photos': 'Dad'
+};
+const STATIC_MEDIA_MANIFEST = 'shared-media/manifest.json';
+let staticMediaCache = null;
+
+// ── NAVIGATION ────────────────────────────────────────────────
+window.goTo = id => {
+  const cur = document.querySelector('.screen.active');
+  if (cur) { cur.classList.add('leaving'); setTimeout(()=>cur.classList.remove('leaving'), 260); }
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const next = document.getElementById(id);
+  next.classList.add('active');
+  if (id === 'screen-birthday') initBirthday();
+  playSfx('nav');
+};
+
+// ── CARD CLICK SOUND ─────────────────────────────────────────
+function playCardSound() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(660, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.18, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+    osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.32);
+  } catch(e) {}
+}
+// Attach sound to all member cards
+document.querySelectorAll('.member-card, .family-link-card').forEach(c => {
+  if (c.classList.contains('member-card')) c.setAttribute('tabindex', '0');
+  c.addEventListener('click', () => { playCardSound(); playSfx('nav'); });
+  c.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      c.click();
+    }
+  });
+});
+
+// ── CONFETTI ─────────────────────────────────────────────────
+window.launchConfetti = function(duration=180) {
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9990;';
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+  const colors = ['#0A98D1','#ff6b9d','#ffb347','#a8e6cf','#ff8b94','#ffd93d','#c3a7ff'];
+  const shapes = ['rect','circle'];
+  const pieces = Array.from({length:140}, () => ({
+    x: Math.random()*canvas.width, y: Math.random()*-canvas.height*0.6,
+    r: Math.random()*7+3, color: colors[Math.floor(Math.random()*colors.length)],
+    shape: shapes[Math.floor(Math.random()*shapes.length)],
+    vx: (Math.random()-0.5)*5, vy: Math.random()*4+1.5,
+    rot: Math.random()*360, rotV: (Math.random()-0.5)*6, opacity: 1
+  }));
+  let frame = 0;
+  function draw() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pieces.forEach(p => {
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+      ctx.globalAlpha = Math.max(0, 1-(frame/duration)*0.7);
+      ctx.fillStyle = p.color;
+      if (p.shape==='circle') { ctx.beginPath(); ctx.arc(0,0,p.r,0,Math.PI*2); ctx.fill(); }
+      else ctx.fillRect(-p.r/2,-p.r,p.r,p.r*2);
+      ctx.restore();
+      p.x+=p.vx; p.y+=p.vy; p.rot+=p.rotV;
+      if (p.y > canvas.height) { p.y=-30; p.x=Math.random()*canvas.width; }
+    });
+    frame++;
+    if (frame<duration) requestAnimationFrame(draw); else canvas.remove();
+  }
+  draw();
+};
+
+// ── MAIN PASSWORD ─────────────────────────────────────────────
+window.checkMainPassword = () => {
+  const v = document.getElementById('mainPassword').value.trim();
+  if (v==='Family'||v==='family') {
+    goTo('screen-family');
+    document.getElementById('mainPassword').value='';
+    launchConfetti();
+    burstHearts(20);
+  } else { showToast('❌ باسورد غلط'); shakeEl(document.getElementById('mainPassword')); }
+};
+document.getElementById('mainPassword').addEventListener('keyup', e=>{ if(e.key==='Enter') checkMainPassword(); });
+
+// ── SELECT MEMBER ─────────────────────────────────────────────
+window.selectMember = (id, nameEn, pwd, icon) => {
+  window.currentMember = id;
+  document.getElementById('loginAvatar').textContent = icon;
+  document.getElementById('loginName').textContent   = nameEn;
+  document.getElementById('memberPassword').value    = '';
+  goTo('screen-member-login');
+};
+
+window.checkMemberPassword = () => {
+  const v = document.getElementById('memberPassword').value.trim();
+  if (v === PWDS[window.currentMember]) {
+    document.getElementById('memberPassword').value = '';
+    burstHearts(10);
+    launchConfetti(100);
+    if (window.currentMember === 'Dad') {
+      document.getElementById('addDadBtn').classList.remove('hidden');
+      loadDadPhotos();
+      goTo('screen-dad');
+    } else {
+      document.getElementById('memAvatar').textContent = document.getElementById('loginAvatar').textContent;
+      document.getElementById('memName').textContent   = window.currentMember;
+      document.getElementById('addMemoryBtn').classList.add('hidden');
+      window.showingFavOnly = false;
+      document.getElementById('favFilterBtn').classList.remove('active');
+      loadMemories();
+      goTo('screen-memories');
+    }
+  } else { showToast('❌ باسورد غلط'); shakeEl(document.getElementById('memberPassword')); }
+};
+
+// ── FAVORITES ────────────────────────────────────────────────
+window.toggleFavFilter = () => {
+  window.showingFavOnly = !window.showingFavOnly;
+  const btn = document.getElementById('favFilterBtn');
+  btn.classList.toggle('active', window.showingFavOnly);
+  renderGrid(window.memories, document.getElementById('memoriesGrid'), 'memCount', 'ذكريات');
+};
+
+window.toggleFav = (e, idx) => {
+  e.stopPropagation();
+  const m = window.currentMember;
+  let favs = getFavs(m);
+  const key = window.memories[idx]?.imageURL || idx;
+  const pos = favs.indexOf(key);
+  if (pos>-1) favs.splice(pos,1); else favs.push(key);
+  saveFavs(m, favs);
+  // Update button
+  const btn = document.querySelector(`.fav-star[data-idx="${idx}"]`);
+  if (btn) btn.classList.toggle('starred', pos===-1);
+  playSfx('fav');
+  showToast(pos>-1 ? '💔 أُزيل من المفضلة' : '⭐ أُضيف للمفضلة');
+};
+
+window.toggleFavFromLightbox = () => {
+  const idx = window.lightboxIndex;
+  const m = window.currentMember;
+  let favs = getFavs(m);
+  const key = window.memories[idx]?.imageURL;
+  const pos = favs.indexOf(key);
+  if (pos>-1) favs.splice(pos,1); else favs.push(key);
+  saveFavs(m, favs);
+  document.getElementById('lightboxFavBtn').classList.toggle('starred', pos===-1);
+  playSfx('fav');
+  showToast(pos>-1 ? '💔 أُزيل من المفضلة' : '⭐ أُضيف للمفضلة');
+};
+
+// ── LOAD MEMORIES ─────────────────────────────────────────────
+async function loadMemories() {
+  const grid = document.getElementById('memoriesGrid');
+  grid.innerHTML = `<div class="loading-memories"><div class="spinner"></div><p>جاري التحميل...</p></div>`;
+  let mems = [];
+  try {
+    if (useFirebase) {
+      const snap = await getDocs(query(collection(db,'members',window.currentMember,'memories'), orderBy('timestamp','desc')));
+      snap.forEach(d => { const dd=d.data(); mems.push({docId:d.id, imageURL:dd.imageURL, caption:dd.caption, date:dd.timestamp?.toDate?.()?.toLocaleDateString('ar-EG')||'', type:dd.type||'image'}); });
+      const localMems = lsLoad(window.currentMember);
+      if (localMems.length) {
+        const seen = new Set(mems.map(m => m.imageURL));
+        localMems.forEach(m => { if (!seen.has(m.imageURL)) mems.push(m); });
+      }
+    } else { mems = lsLoad(window.currentMember); }
+  } catch(e) { mems = lsLoad(window.currentMember); }
+  const staticManifest = await loadStaticMediaManifest();
+  const staticMems = normalizeStaticItems(staticManifest[window.currentMember]);
+  if (staticMems.length) {
+    const seen = new Set(mems.map(m => m.imageURL));
+    staticMems.forEach(m => { if (!seen.has(m.imageURL)) mems.push(m); });
+  }
+  window.memories = mems;
+  renderGrid(mems, grid, 'memCount', 'ذكريات');
+}
+
+async function loadDadPhotos() {
+  const grid = document.getElementById('dadGrid');
+  grid.innerHTML = `<div class="loading-memories"><div class="spinner"></div><p>جاري التحميل...</p></div>`;
+  let mems = [];
+  try {
+    if (useFirebase) {
+      const snap = await getDocs(query(collection(db,'members','Dad','memories'), orderBy('timestamp','desc')));
+      snap.forEach(d => { const dd=d.data(); mems.push({docId:d.id, imageURL:dd.imageURL, caption:dd.caption, date:'', type:dd.type||'image'}); });
+      const localMems = lsLoad('Dad');
+      if (localMems.length) {
+        const seen = new Set(mems.map(m => m.imageURL));
+        localMems.forEach(m => { if (!seen.has(m.imageURL)) mems.push(m); });
+      }
+    } else { mems = lsLoad('Dad'); }
+  } catch(e) { mems = lsLoad('Dad'); }
+  const staticManifest = await loadStaticMediaManifest();
+  const staticMems = normalizeStaticItems(staticManifest.Dad);
+  if (staticMems.length) {
+    const seen = new Set(mems.map(m => m.imageURL));
+    staticMems.forEach(m => { if (!seen.has(m.imageURL)) mems.push(m); });
+  }
+  window.memories = mems;
+  renderGrid(mems, grid, 'dadPhotoCount', 'صور');
+}
+
+function renderGrid(mems, grid, countId, unit) {
+  const favs = window.currentMember ? getFavs(window.currentMember) : [];
+  let displayMems = mems;
+  if (window.showingFavOnly) displayMems = mems.filter(m => favs.includes(m.imageURL));
+  document.getElementById(countId).textContent = displayMems.length + ' ' + unit;
+  grid.innerHTML = '';
+  if (!displayMems.length) {
+    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">${window.showingFavOnly?'⭐':'📷'}</div><p>${window.showingFavOnly?'لا توجد ذكريات في المفضلة':'لا توجد ذكريات بعد'}</p><span>اكتب FAMILY2026 لفتح الإضافة</span></div>`;
+    return;
+  }
+  displayMems.forEach((mem, i) => {
+    const realIdx = mems.indexOf(mem);
+    const isFav   = favs.includes(mem.imageURL);
+    const isVideo  = mem.type === 'video';
+    const c = document.createElement('div');
+    c.className = 'memory-card';
+    c.style.animationDelay = (i*0.07)+'s';
+    c.innerHTML = `
+      <div class="memory-img-wrap">
+        ${isVideo
+          ? `<video src="${mem.imageURL}" muted playsinline class="loaded" style="width:100%;height:100%;object-fit:cover;display:block;"></video><div class="video-play-badge">▶</div>`
+          : `<img src="${mem.imageURL}" alt="${mem.caption||''}" loading="lazy" onload="this.classList.add('loaded')">`}
+        <div class="memory-overlay"><span>${isVideo?'▶':'🔍'}</span></div>
+        <button class="fav-star ${isFav?'starred':''}" data-idx="${realIdx}" onclick="toggleFav(event,${realIdx})">⭐</button>
+        ${mem.source === 'static' ? '' : `<button class="delete-star" onclick="deleteMemory(event,${realIdx})" title="حذف">🗑</button>`}
+      </div>
+      ${mem.caption?`<div class="memory-caption">${mem.caption}</div>`:''}
+      ${mem.date?`<div class="memory-date">${mem.date}</div>`:''}
+    `;
+    c.querySelector('.memory-img-wrap').addEventListener('click', (e) => {
+      if (!e.target.classList.contains('fav-star') && !e.target.classList.contains('delete-star')) { playCardSound(); openLightbox(realIdx); }
+    });
+    grid.appendChild(c);
+  });
+}
+
+window.deleteMemory = async (e, idx) => {
+  e.stopPropagation();
+  const target = window.memories[idx];
+  if (!target) return;
+  if (target.source === 'static') {
+    showToast('ℹ️ دي صورة ثابتة من GitHub');
+    return;
+  }
+  if (!confirm('متأكد إنك عايز تحذف الذكرى دي؟')) return;
+  try {
+    if (useFirebase && target.docId) {
+      await deleteDoc(doc(db, 'members', window.currentMember, 'memories', target.docId));
+    } else {
+      const arr = lsLoad(window.currentMember);
+      arr.splice(idx, 1);
+      lsSave(window.currentMember, arr);
+    }
+    window.memories.splice(idx, 1);
+    const gridId = window.currentMember === 'Dad' ? 'dadGrid' : 'memoriesGrid';
+    const countId = window.currentMember === 'Dad' ? 'dadPhotoCount' : 'memCount';
+    const unit = window.currentMember === 'Dad' ? 'صور' : 'ذكريات';
+    renderGrid(window.memories, document.getElementById(gridId), countId, unit);
+    showToast('🗑 تم حذف الذكرى');
+  } catch (err) {
+    showToast('❌ حصل خطأ أثناء الحذف');
+  }
+};
+
+// ── SAVE IMAGE / VIDEO ────────────────────────────────────────
+async function saveMedia(member, file, caption, type) {
+  const autoDate = new Date().toLocaleDateString('ar-EG');
+  if (useFirebase) {
+    try {
+      const sRef = ref(storage, `members/${member}/${Date.now()}_${file.name}`);
+      await uploadBytes(sRef, file);
+      const url = await getDownloadURL(sRef);
+      await addDoc(collection(db,'members',member,'memories'), { imageURL:url, caption, type, timestamp:serverTimestamp() });
+      return;
+    } catch (e) {
+      // Fallback keeps uploads working if Firebase rules/config fail temporarily.
+      console.warn('Firebase save failed, using local fallback:', e);
+    }
+  } else {
+    // no-op; local save handled below
+  }
+  const b64 = await toB64(file);
+  const arr = lsLoad(member);
+  arr.unshift({ imageURL:b64, caption, date:autoDate, type });
+  lsSave(member, arr);
+}
+
+// ── MEDIA TABS ────────────────────────────────────────────────
+window.switchTab = (type) => {
+  window.currentMediaType = type;
+  document.getElementById('tabPhoto').classList.toggle('active', type==='photo');
+  document.getElementById('tabVideo').classList.toggle('active', type==='video');
+  const input = document.getElementById('mediaInput');
+  input.accept = type==='photo' ? 'image/*' : 'video/*';
+  input.value='';
+  document.getElementById('mediaPreview').classList.add('hidden');
+  document.getElementById('mediaVideo').classList.add('hidden');
+  document.getElementById('mediaPH').style.display='flex';
+  document.getElementById('mediaPH').querySelector('p').textContent = type==='photo' ? 'اضغط لاختيار صورة' : 'اضغط لاختيار فيديو';
+  document.getElementById('mediaPH').querySelector('.upload-icon').textContent = type==='photo' ? '📷' : '🎥';
+};
+window.switchDadTab = (type) => {
+  window.currentDadMediaType = type;
+  document.getElementById('dadTabPhoto').classList.toggle('active', type==='photo');
+  document.getElementById('dadTabVideo').classList.toggle('active', type==='video');
+  const input = document.getElementById('dadMediaInput');
+  input.accept = type==='photo' ? 'image/*' : 'video/*';
+  input.value='';
+  document.getElementById('dadMediaPreview').classList.add('hidden');
+  document.getElementById('dadMediaVideo').classList.add('hidden');
+  document.getElementById('dadMediaPH').style.display='flex';
+};
+
+// ── MODALS ────────────────────────────────────────────────────
+window.openAddModal  = () => { openModal('addModal','mediaInput','mediaPreview','mediaPH','captionInput','mediaVideo'); window.currentMediaType='photo'; switchTab('photo'); };
+window.closeAddModal = () => closeModal('addModal');
+window.openDadModal  = () => { openModal('dadModal','dadMediaInput','dadMediaPreview','dadMediaPH','dadCaptionInput','dadMediaVideo'); window.currentDadMediaType='photo'; switchDadTab('photo'); };
+window.closeDadModal = () => closeModal('dadModal');
+
+function openModal(modalId, inputId, previewId, phId, captionId, videoId) {
+  document.getElementById(captionId).value = '';
+  document.getElementById(previewId).classList.add('hidden');
+  if(videoId) document.getElementById(videoId).classList.add('hidden');
+  document.getElementById(phId).style.display = 'flex';
+  document.getElementById(inputId).value = '';
+  document.getElementById(modalId).classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  if (modalId === 'addModal') clearMultiSelect(false);
+  if (modalId === 'dadModal') clearMultiSelect(true);
+  playSfx('open');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+  document.body.style.overflow='';
+  if (id === 'addModal') clearMultiSelect(false);
+  if (id === 'dadModal') clearMultiSelect(true);
+  playSfx('close');
+}
+
+function clearMultiSelect(isDad) {
+  if (isDad) {
+    window.multiDadUploadFiles.forEach(item => { if (item?.previewUrl) URL.revokeObjectURL(item.previewUrl); });
+    window.multiDadUploadFiles = [];
+    const input = document.getElementById('dadMultiMediaInput');
+    const list = document.getElementById('dadMultiCaptionList');
+    const panel = document.getElementById('dadMultiUploadPanel');
+    const bulk = document.getElementById('dadMultiBulkCaption');
+    const count = document.getElementById('dadMultiCountLabel');
+    const modal = document.querySelector('#dadModal .modal');
+    if (input) input.value = '';
+    if (list) list.innerHTML = '';
+    if (panel) panel.classList.add('hidden');
+    if (modal) modal.classList.remove('multi-open');
+    if (bulk) bulk.value = '';
+    if (count) count.textContent = '0 صورة';
+    return;
+  }
+  window.multiUploadFiles.forEach(item => { if (item?.previewUrl) URL.revokeObjectURL(item.previewUrl); });
+  window.multiUploadFiles = [];
+  const input = document.getElementById('multiMediaInput');
+  const list = document.getElementById('multiCaptionList');
+  const panel = document.getElementById('multiUploadPanel');
+  const bulk = document.getElementById('multiBulkCaption');
+  const count = document.getElementById('multiCountLabel');
+  const modal = document.querySelector('#addModal .modal');
+  if (input) input.value = '';
+  if (list) list.innerHTML = '';
+  if (panel) panel.classList.add('hidden');
+  if (modal) modal.classList.remove('multi-open');
+  if (bulk) bulk.value = '';
+  if (count) count.textContent = '0 صورة';
+}
+
+window.handleMultiSelect = (e, isDad) => {
+  const picked = Array.from(e.target.files || []).filter(f => f.type.startsWith('image/'));
+  if (!picked.length) return;
+  const targetInput = document.getElementById(isDad ? 'dadMultiTargetCount' : 'multiTargetCount');
+  const targetCount = Math.max(1, Math.min(30, Number(targetInput?.value || 30)));
+  if (targetInput) targetInput.value = String(targetCount);
+  if (picked.length > targetCount) {
+    showToast(`⚠️ تم اختيار أول ${targetCount} صورة حسب العدد المطلوب`);
+  }
+  const files = picked.slice(0, targetCount).map(f => ({ file: f, previewUrl: URL.createObjectURL(f) }));
+  if (isDad) window.multiDadUploadFiles = files;
+  else window.multiUploadFiles = files;
+  renderMultiCaptionInputs(isDad);
+};
+
+function renderMultiCaptionInputs(isDad) {
+  const files = isDad ? window.multiDadUploadFiles : window.multiUploadFiles;
+  const list = document.getElementById(isDad ? 'dadMultiCaptionList' : 'multiCaptionList');
+  const panel = document.getElementById(isDad ? 'dadMultiUploadPanel' : 'multiUploadPanel');
+  const count = document.getElementById(isDad ? 'dadMultiCountLabel' : 'multiCountLabel');
+  const modal = document.querySelector(isDad ? '#dadModal .modal' : '#addModal .modal');
+  if (!list) return;
+  if (!files.length) {
+    list.innerHTML = '';
+    if (panel) panel.classList.add('hidden');
+    if (modal) modal.classList.remove('multi-open');
+    if (count) count.textContent = '0 صورة';
+    return;
+  }
+  if (panel) panel.classList.remove('hidden');
+  if (modal) modal.classList.add('multi-open');
+  if (count) count.textContent = `${files.length} صورة`;
+  list.innerHTML = files.map((f, i) => `
+    <div class="multi-item">
+      <div class="multi-item-head">
+        <span class="multi-item-index">#${i + 1}</span>
+        <span class="multi-item-name">${f.file.name}</span>
+      </div>
+      <img class="multi-item-thumb" src="${f.previewUrl}" alt="preview ${i + 1}">
+      <textarea class="multi-caption-input multi-caption-textarea" data-idx="${i}" rows="2" placeholder="اكتب تعليق الصورة رقم ${i + 1}"></textarea>
+    </div>
+  `).join('');
+}
+
+window.applyBulkCaption = (isDad) => {
+  const bulk = document.getElementById(isDad ? 'dadMultiBulkCaption' : 'multiBulkCaption');
+  if (!bulk) return;
+  const v = bulk.value.trim();
+  const listSelector = isDad ? '#dadMultiCaptionList .multi-caption-input' : '#multiCaptionList .multi-caption-input';
+  const inputs = Array.from(document.querySelectorAll(listSelector));
+  inputs.forEach(inp => { inp.value = v; });
+};
+
+function normalizeFolderName(v='') {
+  return String(v).trim().toLowerCase().replace(/[_-]+/g, ' ').replace(/\s+/g, ' ');
+}
+
+window.importFromFolder = async (filesList) => {
+  const files = Array.from(filesList || []);
+  if (!files.length) {
+    showToast('⚠️ مفيش ملفات للاستيراد');
+    return;
+  }
+  const mediaFiles = files.filter(f => f.type.startsWith('image/') || f.type.startsWith('video/'));
+  if (!mediaFiles.length) {
+    showToast('⚠️ الفولدر لازم يحتوي صور أو فيديوهات');
+    return;
+  }
+  let imported = 0;
+  let skipped = 0;
+  showToast('⏳ جاري الاستيراد...');
+  for (const file of mediaFiles) {
+    const rel = file.webkitRelativePath || file.name;
+    const parts = rel.split('/').filter(Boolean);
+    const rawFolder = parts.length > 1 ? parts[1] : '';
+    const norm = normalizeFolderName(rawFolder);
+    const member = MEMBER_FOLDER_MAP[norm] || MEMBER_FOLDER_MAP[norm.replace(/\s+/g, '')];
+    if (!member) { skipped++; continue; }
+    try {
+      const type = file.type.startsWith('video/') ? 'video' : 'image';
+      await saveMedia(member, file, '', type);
+      imported++;
+    } catch (e) {
+      skipped++;
+    }
+  }
+  showToast(`✅ تم استيراد ${imported} ملف${skipped ? ` · وتخطي ${skipped}` : ''}`);
+  if (window.currentMember === 'Dad') loadDadPhotos();
+  else if (window.currentMember) loadMemories();
+};
+
+window.previewMedia = (e, previewId, phId, videoId) => {
+  const f = e.target.files[0]; if (!f) return;
+  const isVideo = f.type.startsWith('video/');
+  if (isVideo && videoId) {
+    document.getElementById(previewId).classList.add('hidden');
+    const vid = document.getElementById(videoId);
+    vid.src = URL.createObjectURL(f);
+    vid.classList.remove('hidden');
+    document.getElementById(phId).style.display = 'none';
+  } else {
+    if(videoId) document.getElementById(videoId).classList.add('hidden');
+    const r = new FileReader();
+    r.onload = ev => {
+      document.getElementById(previewId).src = ev.target.result;
+      document.getElementById(previewId).classList.remove('hidden');
+      document.getElementById(phId).style.display = 'none';
+    };
+    r.readAsDataURL(f);
+  }
+};
+
+let saving = false;
+window.saveMemory = async () => {
+  if (saving) return;
+  if (window.multiUploadFiles.length) {
+    saving = true;
+    const btn = document.getElementById('saveBtn');
+    btn.textContent = 'جاري حفظ الصور... ⏳';
+    btn.disabled = true;
+    try {
+      const inputs = Array.from(document.querySelectorAll('#multiCaptionList .multi-caption-input'));
+      for (let i = 0; i < window.multiUploadFiles.length; i++) {
+        const f = window.multiUploadFiles[i].file;
+        const cap = (inputs[i]?.value || '').trim();
+        await saveMedia(window.currentMember, f, cap, 'image');
+      }
+      closeAddModal();
+      loadMemories();
+      showToast('✅ تم حفظ الصور بنجاح');
+      burstHearts(16);
+    } catch (e) {
+      showToast('❌ حصل خطأ أثناء حفظ الصور');
+    } finally {
+      saving = false;
+      btn.textContent = 'حفظ الذكرى ❤️';
+      btn.disabled = false;
+    }
+    return;
+  }
+  const file = document.getElementById('mediaInput').files[0];
+  const cap  = document.getElementById('captionInput').value.trim();
+  if (!file) { showToast('⚠️ اختار ملف أول'); return; }
+  const type = file.type.startsWith('video/') ? 'video' : 'image';
+  saving = true; const btn=document.getElementById('saveBtn');
+  btn.textContent='جاري الحفظ... ⏳'; btn.disabled=true;
+  try { await saveMedia(window.currentMember,file,cap,type); closeAddModal(); loadMemories(); showToast('✅ اتحفظت الذكرى!'); burstHearts(12); }
+  catch(e) { showToast('❌ خطأ، حاول تاني'); }
+  finally { saving=false; btn.textContent='حفظ الذكرى ❤️'; btn.disabled=false; }
+};
+
+let savingDad = false;
+window.saveDadPhoto = async () => {
+  if (savingDad) return;
+  if (window.multiDadUploadFiles.length) {
+    savingDad = true;
+    const btn = document.getElementById('dadSaveBtn');
+    btn.textContent = 'جاري حفظ الصور... ⏳';
+    btn.disabled = true;
+    try {
+      const inputs = Array.from(document.querySelectorAll('#dadMultiCaptionList .multi-caption-input'));
+      for (let i = 0; i < window.multiDadUploadFiles.length; i++) {
+        const f = window.multiDadUploadFiles[i].file;
+        const cap = (inputs[i]?.value || '').trim();
+        await saveMedia('Dad', f, cap, 'image');
+      }
+      closeDadModal();
+      loadDadPhotos();
+      showToast('✅ تم حفظ صور بابا');
+      burstHearts(16);
+    } catch (e) {
+      showToast('❌ حصل خطأ أثناء حفظ الصور');
+    } finally {
+      savingDad = false;
+      btn.textContent = 'حفظ ❤️';
+      btn.disabled = false;
+    }
+    return;
+  }
+  const file = document.getElementById('dadMediaInput').files[0];
+  const cap  = document.getElementById('dadCaptionInput').value.trim();
+  if (!file) { showToast('⚠️ اختار ملف أول'); return; }
+  const type = file.type.startsWith('video/') ? 'video' : 'image';
+  savingDad=true; const btn=document.getElementById('dadSaveBtn');
+  btn.textContent='جاري الحفظ... ⏳'; btn.disabled=true;
+  try { await saveMedia('Dad',file,cap,type); closeDadModal(); loadDadPhotos(); showToast("✅ اتحفظت صورة بابا!"); burstHearts(12); }
+  catch(e) { showToast('❌ خطأ، حاول تاني'); }
+  finally { savingDad=false; btn.textContent='حفظ ❤️'; btn.disabled=false; }
+};
+
+['addModal','dadModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', e => { if(e.target.id===id) closeModal(id); });
+});
+
+// ── LIGHTBOX ─────────────────────────────────────────────────
+window.openLightbox = i => {
+  window.lightboxIndex=i; updateLB();
+  document.getElementById('lightbox').classList.remove('hidden');
+  document.body.style.overflow='hidden';
+  startLightboxAutoSlider();
+};
+function updateLB() {
+  const m = window.memories[window.lightboxIndex]; if(!m) return;
+  const img = document.getElementById('lightboxImg');
+  const vid = document.getElementById('lightboxVid');
+  const capEl = document.getElementById('lightboxCaption');
+  const dateEl = document.getElementById('lightboxDate');
+  const favBtn = document.getElementById('lightboxFavBtn');
+  const favs = window.currentMember ? getFavs(window.currentMember) : [];
+  favBtn.classList.toggle('starred', favs.includes(m.imageURL));
+  if (capEl) { capEl.style.opacity='0'; capEl.style.transform='translateY(6px)'; }
+  if (dateEl) { dateEl.style.opacity='0'; dateEl.style.transform='translateY(6px)'; }
+  if (m.type === 'video') {
+    img.style.display='none'; vid.style.display='block';
+    vid.classList.remove('slide-transition'); void vid.offsetWidth; vid.classList.add('slide-transition');
+    vid.src = m.imageURL;
+  } else {
+    vid.style.display='none'; vid.src=''; img.style.display='block';
+    img.classList.remove('slide-transition'); void img.offsetWidth; img.classList.add('slide-transition');
+    img.style.opacity=0; img.src=m.imageURL; img.onload=()=>img.style.opacity=1;
+  }
+  capEl.textContent = m.caption||'';
+  dateEl.textContent = m.date||'';
+  setTimeout(() => {
+    if (capEl) { capEl.style.opacity='1'; capEl.style.transform='translateY(0)'; }
+    if (dateEl) { dateEl.style.opacity='1'; dateEl.style.transform='translateY(0)'; }
+  }, 120);
+}
+window.closeLightbox  = () => {
+  const vid = document.getElementById('lightboxVid');
+  vid.pause(); vid.src='';
+  document.getElementById('lightbox').classList.add('hidden');
+  document.body.style.overflow='';
+  stopLightboxAutoSlider();
+};
+window.navigateLight  = d => { window.lightboxIndex=(window.lightboxIndex+d+window.memories.length)%window.memories.length; updateLB(); };
+function startLightboxAutoSlider() {
+  stopLightboxAutoSlider();
+  if (!Array.isArray(window.memories) || window.memories.length < 2) return;
+  window.lightboxAutoTimer = setInterval(() => {
+    if (!document.getElementById('lightbox').classList.contains('hidden')) navigateLight(1);
+  }, 3000);
+}
+function stopLightboxAutoSlider() {
+  if (!window.lightboxAutoTimer) return;
+  clearInterval(window.lightboxAutoTimer);
+  window.lightboxAutoTimer = null;
+}
+let lbTX=0;
+document.getElementById('lightbox').addEventListener('touchstart', e=>lbTX=e.touches[0].clientX);
+document.getElementById('lightbox').addEventListener('touchend',   e=>{ const d=lbTX-e.changedTouches[0].clientX; if(Math.abs(d)>50) navigateLight(d>0?1:-1); });
+document.addEventListener('keydown', e=>{
+  if(!document.getElementById('lightbox').classList.contains('hidden')){
+    if(e.key==='ArrowLeft') navigateLight(1); if(e.key==='ArrowRight') navigateLight(-1); if(e.key==='Escape') closeLightbox();
+  }
+});
+
+// ── SECRET CODE ───────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+  window.secretBuf += e.key.toUpperCase();
+  if(window.secretBuf.length>10) window.secretBuf=window.secretBuf.slice(-10);
+  if(window.secretBuf==='FAMILY2026') {
+    activateAdminMode();
+    launchConfetti(150);
+    window.secretBuf='';
+  }
+});
+
+// ── BIRTHDAY PAGE ─────────────────────────────────────────────
+window.initBirthday = function() {
+  // Marriage counter
+  const now  = new Date();
+  const diff = Math.floor((now - WEDDING_DATE)/(1000*60*60*24));
+  const el   = document.getElementById('marriageDays');
+  if(el) animateCount(el, diff);
+  // Wedding date label
+  const wdl = document.getElementById('weddingDateLabel');
+  if (wdl) wdl.textContent = WEDDING_DATE_LABEL_AR;
+  // Reset candle
+  const fw = document.getElementById('flameWrap');
+  const bm = document.getElementById('blownMsg');
+  if(fw) { fw.classList.remove('extinguished'); fw.style.opacity='1'; }
+  if(bm) bm.classList.add('hidden');
+  const mb = document.getElementById('micBtn');
+  if(mb) { mb.disabled=false; mb.querySelector('.mic-txt').textContent='انفخ في الشمعة!'; }
+};
+
+function animateCount(el, target) {
+  let start=0, step=Math.ceil(target/60);
+  const t = setInterval(() => {
+    start += step; if(start>=target){start=target; clearInterval(t);}
+    el.textContent = start.toLocaleString('ar-EG');
+  }, 16);
+}
+
+let micStream=null, micAudioCtx=null, micListening=false;
+window.startListening = async function() {
+  if(micListening) return;
+  const btn = document.getElementById('micBtn');
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+    micListening = true;
+    btn.disabled = true;
+    btn.querySelector('.mic-txt').textContent = '🎤 انفخ دلوقتي!';
+    btn.classList.add('listening');
+    micAudioCtx = new (window.AudioContext||window.webkitAudioContext)();
+    const analyser = micAudioCtx.createAnalyser();
+    const mic = micAudioCtx.createMediaStreamSource(stream);
+    analyser.fftSize = 256;
+    mic.connect(analyser);
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    let blown = false;
+    const check = () => {
+      if(blown) return;
+      analyser.getByteFrequencyData(data);
+      const avg = data.reduce((a,b)=>a+b,0)/data.length;
+      if(avg > 28) {
+        blown = true;
+        blowOutCandle();
+        stream.getTracks().forEach(t=>t.stop());
+        micAudioCtx.close();
+        micListening=false;
+        btn.classList.remove('listening');
+      } else { requestAnimationFrame(check); }
+    };
+    requestAnimationFrame(check);
+  } catch(err) {
+    showToast('❌ مش قادر يوصل للميكروفون');
+    micListening=false;
+  }
+};
+
+function blowOutCandle() {
+  const fw = document.getElementById('flameWrap');
+  const bm = document.getElementById('blownMsg');
+  if(!fw) return;
+  fw.classList.add('extinguished');
+  playSfx('blow');
+  setTimeout(() => {
+    fw.style.opacity='0';
+    bm.classList.remove('hidden');
+    launchConfetti(250);
+    burstHearts(30);
+    showToast('🎊 كل سنة وبابا بخير! 🎊');
+  }, 400);
+}
+
+// ── HEARTS ────────────────────────────────────────────────────
+const HH = ['❤️','💙','💕','💖','💗','🩷','🩵','💝'];
+function spawnHeart(big=false){
+  const h=document.createElement('div'); h.className='floating-heart';
+  h.textContent=HH[Math.floor(Math.random()*HH.length)];
+  h.style.left=(Math.random()*100)+'vw';
+  h.style.animationDuration=(big?4+Math.random()*3:5+Math.random()*5)+'s';
+  h.style.fontSize=(big?16+Math.random()*20:9+Math.random()*13)+'px';
+  h.style.animationDelay=(Math.random()*1.2)+'s';
+  document.getElementById('heartsContainer').appendChild(h);
+  setTimeout(()=>h.remove(),11000);
+}
+window.burstHearts = n => { for(let i=0;i<n;i++) setTimeout(()=>spawnHeart(true),i*100); };
+setInterval(()=>spawnHeart(false), 1600);
+
+// ── TOAST ─────────────────────────────────────────────────────
+window.showToast = msg => {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.remove('hidden'); t.classList.add('show');
+  playSfx(msg?.startsWith?.('❌') ? 'error' : 'toast');
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.classList.add('hidden'),400); },3000);
+};
+window.shakeEl = el => { el.classList.add('shake'); setTimeout(()=>el.classList.remove('shake'),500); };
+
+// ── DARK MODE ─────────────────────────────────────────────────
+const darkBtn = document.getElementById('darkmodeBtn');
+let darkBtnTapCount = 0;
+let darkBtnTapTimer = null;
+function applyDarkMode(isDark) {
+  document.body.classList.toggle('dark', !!isDark);
+  darkBtn.textContent = document.body.classList.contains('dark')?'☀️':'🌙';
+  prefSet('pref_dark', document.body.classList.contains('dark'));
+}
+function activateAdminMode() {
+  window.isAdminUnlocked = true;
+  document.body.classList.add('admin-unlocked');
+  if (document.getElementById('screen-memories').classList.contains('active')) {
+    document.getElementById('addMemoryBtn').classList.remove('hidden');
+    renderGrid(window.memories, document.getElementById('memoriesGrid'), 'memCount', 'ذكريات');
+  }
+  if (document.getElementById('screen-dad').classList.contains('active')) {
+    renderGrid(window.memories, document.getElementById('dadGrid'), 'dadPhotoCount', 'صور');
+  }
+  showToast('🔓 Admin mode unlocked!');
+  burstHearts(25);
+}
+applyDarkMode(prefGet('pref_dark', true));
+darkBtn.onclick = () => {
+  applyDarkMode(!document.body.classList.contains('dark'));
+  playSfx('toggle');
+  darkBtnTapCount += 1;
+  clearTimeout(darkBtnTapTimer);
+  darkBtnTapTimer = setTimeout(() => { darkBtnTapCount = 0; }, 1200);
+  if (darkBtnTapCount >= 3) {
+    darkBtnTapCount = 0;
+    activateAdminMode();
+  }
+};
+
+// ── SOUND TOGGLE ───────────────────────────────────────────────
+const soundBtn = document.getElementById('soundBtn');
+function updateSoundBtn() { soundBtn.textContent = sfxEnabled ? '🔊' : '🔇'; }
+updateSoundBtn();
+soundBtn.onclick = () => {
+  sfxEnabled = !sfxEnabled;
+  prefSet('pref_sfx', sfxEnabled);
+  updateSoundBtn();
+  if (sfxEnabled) playSfx('toggle');
+};
+
+// ── FULLSCREEN ────────────────────────────────────────────────
+const fsBtn = document.getElementById('fsBtn');
+function fsSupported() {
+  return !!(document.documentElement?.requestFullscreen || document.webkitFullscreenEnabled);
+}
+function isFs() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement);
+}
+function updateFsBtn() {
+  if (!fsBtn) return;
+  if (!fsSupported()) { fsBtn.classList.add('hidden'); return; }
+  fsBtn.textContent = isFs() ? '⤢' : '⛶';
+}
+async function toggleFullscreen() {
+  if (!fsSupported()) return;
+  try {
+    if (!isFs()) await (document.documentElement.requestFullscreen?.() || document.documentElement.webkitRequestFullscreen?.());
+    else await (document.exitFullscreen?.() || document.webkitExitFullscreen?.());
+  } catch(e) {}
+  updateFsBtn();
+}
+if (fsBtn) fsBtn.onclick = () => { playSfx('toggle'); toggleFullscreen(); };
+document.addEventListener('fullscreenchange', updateFsBtn);
+document.addEventListener('webkitfullscreenchange', updateFsBtn);
+updateFsBtn();
+
+// ── MUSIC PLAYER ─────────────────────────────────────────────
+const TRACKS = [
+  { src:'birthday.mp3', title:'🎂 Happy Birthday Song', sub:'أغنية عيد ميلادك' },
+  { src:'song.mp3',     title:'🎵 مين يادوب',           sub:'TikTok Song' }
+];
+let currentTrack = 0;
+const aud = new Audio(TRACKS[0].src);
+aud.loop = false;
+aud.volume = 0.3;
+let isPlaying = false;
+const playBtn  = document.getElementById('playBtn');
+const progBar  = document.getElementById('progBar');
+const tapeProg = document.getElementById('tapeProg');
+const reelL    = document.getElementById('reelL');
+const reelR    = document.getElementById('reelR');
+
+const fmt = s => { const m=Math.floor(s/60),ss=Math.floor(s%60).toString().padStart(2,'0'); return `${m}:${ss}`; };
+aud.addEventListener('loadedmetadata', ()=>{ document.getElementById('totTime').textContent=fmt(aud.duration); });
+aud.addEventListener('timeupdate', ()=>{
+  if(!aud.duration) return;
+  const p=(aud.currentTime/aud.duration)*100;
+  progBar.value=p; tapeProg.style.width=p+'%';
+  document.getElementById('curTime').textContent=fmt(aud.currentTime);
+});
+aud.addEventListener('ended', ()=>{ isPlaying=false; playBtn.textContent='▶'; stopReels(); });
+function stopReels(){ reelL.style.animationPlayState=reelR.style.animationPlayState='paused'; }
+function startReels(){ reelL.style.animationPlayState=reelR.style.animationPlayState='running'; }
+window.togglePlay = ()=>{
+  if(isPlaying){ aud.pause(); playBtn.textContent='▶'; stopReels(); }
+  else { aud.play().catch(()=>{}); playBtn.textContent='⏸'; startReels(); }
+  isPlaying=!isPlaying;
+};
+window.seekTo  = v=>{ if(aud.duration) aud.currentTime=(v/100)*aud.duration; };
+window.seekBack= ()=>{ aud.currentTime=Math.max(0,aud.currentTime-10); };
+window.seekFwd = ()=>{ aud.currentTime=Math.min(aud.duration||0,aud.currentTime+10); };
+
+window.switchTrack = (idx) => {
+  if(idx===currentTrack) return;
+  const wasPlaying = isPlaying;
+  aud.pause(); isPlaying=false; playBtn.textContent='▶'; stopReels();
+  aud.src = TRACKS[idx].src;
+  aud.load();
+  currentTrack = idx;
+  document.getElementById('songTitleTxt').textContent = TRACKS[idx].title;
+  document.getElementById('songSubTxt').textContent   = TRACKS[idx].sub;
+  document.getElementById('curTime').textContent = '0:00';
+  document.getElementById('totTime').textContent = '0:00';
+  progBar.value = 0; tapeProg.style.width='0%';
+  document.querySelectorAll('.track-pill').forEach((b,i) => b.classList.toggle('active', i===idx));
+  if(wasPlaying){ aud.play().catch(()=>{}); playBtn.textContent='⏸'; startReels(); isPlaying=true; }
+  showToast(TRACKS[idx].title + ' 🎵');
+};
+
+// ── LOADING SCREEN INIT ───────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const bulkInput = document.getElementById('bulkFolderInput');
+  if (bulkInput) {
+    bulkInput.addEventListener('change', async (e) => {
+      await importFromFolder(e.target.files);
+      e.target.value = '';
+    });
+  }
+  const loading = document.getElementById('screen-loading');
+  setTimeout(() => {
+    loading.classList.add('loading-fade-out');
+    setTimeout(() => {
+      loading.style.display='none';
+      document.getElementById('screen-gate').classList.add('active');
+      setTimeout(()=>document.getElementById('gateContainer').classList.add('visible'),80);
+    }, 700);
+  }, 2600);
+});
+
+// ── GATE STARS (premium vibe) ─────────────────────────────────
+function initGateStars() {
+  const host = document.getElementById('gateStars');
+  if (!host) return;
+  host.innerHTML = '';
+  const count = Math.min(80, Math.floor((window.innerWidth * window.innerHeight) / 18000) + 40);
+  for (let i = 0; i < count; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() < 0.86 ? 1 : 2;
+    s.style.width = size + 'px';
+    s.style.height = size + 'px';
+    s.style.left = (Math.random() * 100) + '%';
+    s.style.top  = (Math.random() * 100) + '%';
+    s.style.opacity = (0.08 + Math.random() * 0.55).toFixed(2);
+    s.style.setProperty('--dur', (2.2 + Math.random() * 3.8).toFixed(2) + 's');
+    s.style.setProperty('--del', (-Math.random() * 4).toFixed(2) + 's');
+    host.appendChild(s);
+  }
+}
+window.addEventListener('resize', () => { clearTimeout(window.__starz); window.__starz=setTimeout(initGateStars, 200); });
+initGateStars();
+
+// ── GATE SPOTLIGHT ────────────────────────────────────────────
+(() => {
+  const gate = document.getElementById('screen-gate');
+  if (!gate) return;
+  const move = (e) => {
+    const r = gate.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top)  / r.height) * 100;
+    gate.style.setProperty('--mx', x.toFixed(2) + '%');
+    gate.style.setProperty('--my', y.toFixed(2) + '%');
+  };
+  window.addEventListener('pointermove', move, { passive:true });
+})();
+</script>
+</body>
+</html>
